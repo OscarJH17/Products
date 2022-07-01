@@ -1,0 +1,14 @@
+<header>
+  <nav class="navbar bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand">Shopping</a>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" (input)="getList($event)" (keyup.enter)="getProducts($event)" placeholder="Search"
+          aria-label="Search">
+          <div class="profile-picture">
+            <img class="profile-image" alt="Profile" src="assets\icons\profile_icon.svg">
+        </div>
+      </form>
+    </div>
+  </nav>
+</header>

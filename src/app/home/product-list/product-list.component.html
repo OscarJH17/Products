@@ -1,0 +1,65 @@
+<div class="product mx-1">
+    <div class="row row-cols-6 me-1 product-page" *ngIf="productList && productList.products.length>0">
+        <div class="product-base col" [attr.id]="'product-base'+i"
+            *ngFor="let product of productList?.products ; index as i">
+            <div [attr.id]="'product'+i" class="carousel slide" data-bs-ride="true">
+                <div class="carousel-indicators" *ngIf="product.images.length>1">
+                    <button type="button" [attr.data-bs-target]="'#product'+i" [attr.data-bs-slide-to]="k"
+                        [ngClass]="{'active': k==0}" aria-current="true" aria-label="Slide 1"
+                        *ngFor="let img of product.images; index as k">
+                    </button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item" *ngFor="let img of product.images; index as j"
+                        [ngClass]="{'active': j==0}" data-bs-interval="2000">
+                        <img id=image [src]="img" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <span class="product-ratings">
+                                <span>{{product.review?.absoluteRating}}</span>
+                                <img class="star-image" alt="star" src="assets\icons\star.svg">
+                                <span> | {{product.review?.count}}</span>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="product-details">
+                <h3 class="m-0">{{product.name}}</h3>
+                <div class="price-details">
+                    <span>
+                        <span class="price ps-0 d-inline-block">{{product.price.priceDisplay | roundoff}}</span>
+                        <span class="discount_price">{{product.price.strikeThroughPriceDisplay | roundoff}}</span>
+                    </span>
+                    <span class="discount">({{product.price.discount}}% OFF)</span>
+                    <div class="product-location">
+                        <img class="ms-0 star-image" alt="star" src="assets\icons\location.svg">
+                        <span class="location">{{product.location}}</span>
+                    </div>
+                    <button type="button" class="btn cart-btn btn-warning" (click)="openSnackBar(product);product.checked=true">
+                        <span>
+                        </span>{{product.checked?"Buy Now" : "Add to Cart"}} </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <nav class="pagination" aria-label="Page navigation example" *ngIf="productList && productList.products.length>0">
+        <ul class="pagination">
+            <li class="page-item" [ngClass]="{'disabled': params?.start <= 1}" (click)="getPreviousProducts()">
+                <a class="page-link">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item" (click)="getNextProducts(1)"><a class="page-link" href="#">1</a></li>
+            <li class="page-item" (click)="getNextProducts(2)"><a class="page-link" href="#">2</a></li>
+            <li class="page-item" (click)="getNextProducts(3)"><a class="page-link" href="#">3</a></li>
+            <li class="page-item" (click)="getNextProducts()">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

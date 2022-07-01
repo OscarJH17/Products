@@ -1,0 +1,7 @@
+<div class="container-fluid px-0">
+    <app-header (emitParams)="getParams($event)"></app-header>
+    <main role="main" class="main-wrapper">
+        <app-product-list [params]="params"></app-product-list>
+    </main>
+</div>
+

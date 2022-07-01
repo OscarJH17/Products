@@ -1,0 +1,24 @@
+.navbar {
+    box-shadow: 0 4px 12px 0 lightgrey;
+    padding: 1rem 1rem;
+    background-color:white
+}
+
+.search-field {
+    right: 15px;
+    width: 300px;
+    .mat-form-field-wrapper {
+        padding-bottom: 0 !important;
+    }
+}
+
+.form-control:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+.navbar-brand{
+    color: #000dff;
+    font-size: 30px;
+    font-weight: 500;
+}
